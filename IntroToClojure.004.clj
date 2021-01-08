@@ -11,12 +11,16 @@
 ;; hint
 lein new luminus pokedex
 
+cd pokedex-api
+lein run
+
 ;; a json parsing library is already a dependency of luminus, you can use this to read the json
 ;;    https://github.com/metosin/jsonista
 ;;    includes example documentation for reading a file using the Java file class
 (def file (java.io.File. "hello.json"))
 (slurp file)
 (j/read-value file)
+
 
 
 

@@ -1,5 +1,5 @@
 ; Setup a new webapp
-lein new luminus my-web
+lein new luminus pokedex-api
 
 ;; luminus - is a project template, just like "app" in our previous section
 ;;    https://luminusweb.com/

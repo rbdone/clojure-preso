@@ -30,6 +30,10 @@ clj
 (if true
   (do
     (println "Time for lunch...")
+    (println "Time for lunch...")
+    (println "Time for lunch...")
+    (println "Time for lunch...")
+    (println "Time for lunch...")
     (println "...come now or you'll go hungry")))
 
 
