@@ -2,6 +2,7 @@
   (:require
     [pokedex.middleware :as middleware]
     [pokedex.layout :refer [error-page]]
+    [pokedex.routes.api :refer [api-routes]]
     [pokedex.routes.home :refer [home-routes]]
     [reitit.ring :as ring]
     [ring.middleware.content-type :refer [wrap-content-type]]
@@ -17,7 +18,7 @@
   :start
   (ring/ring-handler
     (ring/router
-      [(home-routes)])
+      [(api-routes) (home-routes)])
     (ring/routes
       (ring/create-resource-handler
         {:path "/"})
