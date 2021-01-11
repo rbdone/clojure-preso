@@ -36,10 +36,24 @@
   (def file (java.io.File. "pokedex.json"))
   (slurp file)
   (def data (j/read-value file))
+  (def dataMap (convert-to-hashmap data))
+
+
+  (println "")
+  (println (dataMap :Raikou))
+
+  (println "")
+  (def searchName (:name (:params request)))
+  (println searchName)
+
+  (println "")
+  (println (dataMap (keyword `~searchName)))
+  (def searchResult (dataMap (keyword `~searchName)))
+
 
   {:status  200
    :headers {"Content-Type" "application/json"}
-   :body    (j/write-value-as-bytes (convert-to-hashmap data))})
+   :body    (j/write-value-as-bytes searchResult)})
 
 
 (defn api-routes []
