@@ -8,10 +8,8 @@
     [jsonista.core :as j]))
 
 
-
 (defn api-page [request]
   (layout/render request "api.html"))
-
 
 
 (defn convert-item [item]
@@ -27,9 +25,6 @@
 
 (defn convert-to-hashmap [data]
   (def firstItem (convert-item (first data)))
-  (println (count data))
-  (println firstItem)
-  (println "")
 
   (if (= (count data) 1)
     firstItem
@@ -37,20 +32,14 @@
           (convert-to-hashmap (rest data)))))
 
 
-
 (defn pokedex [request]
   (def file (java.io.File. "pokedex.json"))
   (slurp file)
   (def data (j/read-value file))
 
-  (println (convert-to-hashmap data))
-
   {:status  200
    :headers {"Content-Type" "application/json"}
-   :body    "test"})
-   ;:body    (j/write-value-as-bytes (convert-item combined))})
-   ;:body (j/write-value-as-bytes (convert-to-obj-map data))})
-
+   :body    (j/write-value-as-bytes (convert-to-hashmap data))})
 
 
 (defn api-routes []
